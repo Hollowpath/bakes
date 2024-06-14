@@ -1,5 +1,10 @@
 <?php
-$mysqli = new mysqli("localhost", "username", "password", "restaurant_reservation");
+$db_host = $_SERVER['DB_HOST'];
+$db_user = $_SERVER['DB_USER'];
+$db_password = $_SERVER['DB_PASSWORD'];
+$db_name = $_SERVER['DB_NAME'];
+
+$mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
 
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: " . $mysqli->connect_error;

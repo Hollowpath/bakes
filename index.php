@@ -1,3 +1,39 @@
+<?php
+session_start();
+
+// Check if the user is logged in by verifying the session variable
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to login page if the user is not logged in
+    header("Location: login.php");
+    exit();
+}
+
+$db_host = $_SERVER['DB_HOST'];
+$db_user = $_SERVER['DB_USER'];
+$db_password = $_SERVER['DB_PASSWORD'];
+$db_name = $_SERVER['DB_NAME'];
+
+$mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
+
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$query = "SELECT first_name FROM users WHERE id = $user_id";
+$result = $mysqli->query($query);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $first_name = $row['first_name'];
+} else {
+    echo "No results";
+}
+
+$mysqli->close();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,17 +65,25 @@
 <!-- Links (sit on top) -->
 <div class="w3-top">
   <div class="w3-row w3-padding w3-black">
-    <div class="w3-col s3">
+    <div class="w3-col s2">
       <a href="#" class="w3-button w3-block w3-black">HOME</a>
     </div>
-    <div class="w3-col s3">
+    <div class="w3-col s2">
       <a href="#about" class="w3-button w3-block w3-black">ABOUT</a>
     </div>
-    <div class="w3-col s3">
+    <div class="w3-col s2">
       <a href="#menu" class="w3-button w3-block w3-black">MENU</a>
     </div>
-    <div class="w3-col s3">
+    <div class="w3-col s2">
       <a href="#where" class="w3-button w3-block w3-black">WHERE</a>
+    </div>
+    <div class="w3-col s2">
+      <div class="w3-dropdown-hover">
+        <button class="w3-button w3-black">Welcome, <?php echo $first_name; ?></button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="logout.php" class="w3-bar-item w3-button">Logout</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
