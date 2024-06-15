@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Set session timeout to 2 minutes (120 seconds)
+ini_set('session.gc_maxlifetime', 120);
+
+// Regenerate session ID every time the user's privilege level changes or on a timer
+session_regenerate_id(true);
+
 // Check if the user is logged in by verifying the session variable
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login page if the user is not logged in
@@ -8,22 +14,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Set session timeout to 2 minutes (2 * 60 seconds)
-ini_set('session.gc_maxlifetime', 120);
-
-// Regenerate session ID every time the user's privilege level changes or on a timer
-session_regenerate_id(true);
-
-// Check if the session is expired
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $_SESSION['timeout'])) {
-    // Expire the session
-    session_unset();     // unset $_SESSION variable for the run-time
-    session_destroy();   // destroy session data in storage
-    header("Location: login.php"); // redirect to login page
-    exit();
-} else {
-    $_SESSION['last_activity'] = time(); // update last activity time stamp
-}
+// Update last activity time stamp to extend session
+$_SESSION['last_activity'] = time();
 
 $db_host = $_SERVER['DB_HOST'];
 $db_user = $_SERVER['DB_USER'];
