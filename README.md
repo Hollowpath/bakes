@@ -37,13 +37,20 @@ The objective is to integrate advanced security measures into Macania Bakes to e
 ### 5. Database Security Principles
 - **SQL Injection Prevention**: Utilized prepared statements and parameterized queries with `mysqli_prepare()` and `bind_param()` to prevent SQL injection attacks.
 - **Database Connection Security**: Stored database credentials securely, avoiding hardcoding in source code files.
+- **Additional**: Disabled MySQL error messages to prevent leakage of sensitive information.
 
 ### 6. File Security Principles
 - **Prevention of File Leaks**: Configured server permissions and `.htaccess` files to restrict access to sensitive directories and prevent directory traversal attacks.
+- **Additional**: Disabled directory traversal to enhance file security.
 
-### 7. Original and Enhanced Source Code Repositories
-- **Original Source Code**: Folder: `old`
-- **Enhanced Source Code**: Folder: `new`
+### 7. SSL/TLS Configuration
+- **SSL Implementation**: Configured SSL/TLS to encrypt data transmitted between clients and the server, enhancing data confidentiality.
+
+### 8. Additional Security Measures
+- **Regex and Input Sanitization**: Implemented regular expressions and input sanitization techniques to validate and sanitize user inputs effectively.
+- **Session Management**: Implemented encrypted sessions with proper expiration policies to manage user sessions securely.
+- **Privilege Management**: Created new privileges in MySQL and set specific permissions to restrict access and enhance database security.
+- **Clean/Pretty URLs**: Implemented URL rewriting techniques to enhance usability and security by preventing direct access to internal resources.
 
 ## References
 - OWASP Top Ten: [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
