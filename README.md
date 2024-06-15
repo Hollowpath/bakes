@@ -1,8 +1,11 @@
 # Macania Bakes - Web Application Security Enhancement
 
 ## Team Members
-- **Name**: [Your Name]
-- **Matric No**: [Your Matric Number]
+| Name               | Matric No    |
+|--------------------|--------------|
+| Faizal Akhtar Bin Azhar        | 2124565 |
+| Wan Mohd Nazim Bin Wan Muhamad Saidin  | 2114261 |
+| Bashir Md Monjur  | 2028113 |
 
 ## Title
 **Macania Bakes - Secure Online Reservation System**
@@ -78,9 +81,3 @@ The objective of these enhancements is to ensure the security and integrity of t
 - PHP Manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
 - MySQLi Documentation: [https://www.php.net/manual/en/book.mysqli.php](https://www.php.net/manual/en/book.mysqli.php)
 - W3Schools HTML5 Validation: [https://www.w3schools.com/html/html_form_input_types.asp](https://www.w3schools.com/html/html_form_input_types.asp)
-
-## Submission
-- GitHub Repository URL: [Your GitHub Repository URL]
-
-## Project Presentation
-The project presentation is scheduled for the 13th of June 2024 at 2.00 PM in ICT TL-ES-02. The presentation will cover the security enhancements made to the Macania Bakes web application, followed by a Q&A session.
