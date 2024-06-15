@@ -1,7 +1,7 @@
-# Macania Bakes - Web Application Security Enhancement
+# WEB APPLICATION SECURITY ENHANCEMENT
 
 ## Team Members
-| Name                              | Matric No  |
+| Name                              | Matric No. |
 |-----------------------------------|------------|
 | Faizal Akhtar Bin Azhar           | 2124565    |
 | Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261    |
@@ -11,69 +11,42 @@
 **Macania Bakes - Secure Online Reservation System**
 
 ## Introduction
-Macania Bakes is a web application designed to facilitate user registrations, logins, and reservations for a bakery. The primary functionalities include user authentication, session management, and reservation processing. This project involves enhancing the security of the original web application developed in the Web Technologies (INFO 2302) course by applying various web application security best practices.
+Macania Bakes is a web application designed for managing online reservations at a bakery. This project aims to enhance the security of the original web application developed during the Web Technologies (INFO 2302) course by implementing various security measures.
 
 ## Objective of the Enhancements
-The objective of these enhancements is to ensure the security and integrity of the Macania Bakes web application by implementing robust security measures. This includes input validation, authentication, authorization, XSS and CSRF prevention, database security, and file security. The goal is to provide a secure service to users and ensure the application's availability when needed.
+The objective is to integrate advanced security measures into Macania Bakes to ensure the confidentiality, integrity, and availability of data. This includes mitigating common security threats such as SQL injection, XSS, CSRF, and ensuring secure authentication and authorization processes.
 
 ## Web Application Security Enhancements
 
 ### 1. Input Validation
-#### Client-Side Validation
-- **Elements Validated**: Name, number of people, date and time, message.
-- **Technique**: HTML5 attributes such as `required`, `type`, and JavaScript for additional validation.
-  
-#### Server-Side Validation
-- **Elements Validated**: Name, number of people, date and time, message.
-- **Technique**: PHP functions like `filter_var()`, `htmlspecialchars()`, `trim()`, and `mysqli_real_escape_string()`.
+- **Client-Side Validation**: Validated fields such as name, reservation details, and messages using HTML5 attributes.
+- **Server-Side Validation**: Implemented server-side validation using PHP functions like `filter_var()`, `htmlspecialchars()`, and prepared statements.
 
 ### 2. Authentication
-- **Method Used**: Password hashing using `password_hash()` and verification using `password_verify()`.
-- **Enhancements**:
-  - Implemented secure session management with `session_start()`, `session_regenerate_id()`, and session encryption.
-  - Enforced HTTPS using SSL certificates configured in Apache on XAMPP.
+- **Method Used**: Implemented secure password hashing with `password_hash()` and verification with `password_verify()`.
+- **Enhancements**: Secured authentication endpoints and enforced strong password policies.
 
 ### 3. Authorization
-- **Method Used**: Role-based access control.
-- **Enhancements**:
-  - Users are assigned as user upon registration.
-  - Access to specific pages and functionalities is restricted based on user roles.
+- **Method Used**: Employed role-based access control (RBAC) to restrict access to specific features based on user roles.
+- **Enhancements**: Enhanced authorization mechanisms to prevent unauthorized access to sensitive functionalities.
 
 ### 4. XSS and CSRF Prevention
-#### XSS Prevention
-- **Method Used**: Escaping output using `htmlspecialchars()`.
-- **Enhancements**:
-  - Applied `htmlspecialchars()` to all user-generated content before displaying it in the browser.
-
-#### CSRF Prevention
-- **Method Used**: CSRF tokens.
-- **Enhancements**:
-  - Generated CSRF tokens using `bin2hex(random_bytes(32))`.
-  - Validated CSRF tokens on form submission.
+- **XSS Prevention**: Applied output encoding using `htmlspecialchars()` to prevent XSS attacks.
+- **CSRF Prevention**: Implemented CSRF tokens in forms using `bin2hex(random_bytes(32))` to mitigate CSRF attacks.
 
 ### 5. Database Security Principles
-#### SQL Injection Prevention
-- **Method Used**: Prepared statements.
-- **Enhancements**:
-  - Used `mysqli_prepare()` and `bind_param()` to safely execute SQL queries.
-  - **Disabled MySQL error messages** to avoid leaking sensitive information.
-
-#### Database Connection and Server Enhancements
-- **Technique**:
-  - Stored database credentials in environment variables to hide passwords from source code.
-  - Set strong passwords for MySQL root accounts.
-  - Created new privileges and restricted access to only necessary permissions.
+- **SQL Injection Prevention**: Utilized prepared statements and parameterized queries with `mysqli_prepare()` and `bind_param()` to prevent SQL injection attacks.
+- **Database Connection Security**: Stored database credentials securely, avoiding hardcoding in source code files.
 
 ### 6. File Security Principles
-#### Preventing File Leaks
-- **Settings and Configurations**:
-  - Restricted file permissions on the server.
-  - Configured `.htaccess` to deny access to sensitive directories and files.
-  - **Disabled directory traversal**.
-  - Sanitized file uploads and URL parameters.
+- **Prevention of File Leaks**: Configured server permissions and `.htaccess` files to restrict access to sensitive directories and prevent directory traversal attacks.
+
+### 7. Original and Enhanced Source Code Repositories
+- **Original Source Code**: Folder: `old`
+- **Enhanced Source Code**: Folder: `new`
 
 ## References
 - OWASP Top Ten: [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
 - PHP Manual: [https://www.php.net/manual/en/](https://www.php.net/manual/en/)
-- MySQLi Documentation: [https://www.php.net/manual/en/book.mysqli.php](https://www.php.net/manual/en/book.mysqli.php)
+- MySQL Documentation: [https://dev.mysql.com/doc/](https://dev.mysql.com/doc/)
 - W3Schools HTML5 Validation: [https://www.w3schools.com/html/html_form_input_types.asp](https://www.w3schools.com/html/html_form_input_types.asp)
