@@ -74,12 +74,10 @@ The objective of these enhancements is to ensure the security and integrity of t
 
 ### 7. Original and Enhanced Source Code Repositories
 #### Original Source Code
-- **Folder**: Original
-- **Contents**: Contains the original web application files including Models, Views, and Controllers subfolders (before enhancement).
+- **Folder**: old
 
 #### Enhanced Source Code
-- **Folder**: Enhanced
-- **Contents**: Contains the enhanced web application files with security elements or components including Models, Views, and Controllers subfolders (after enhancement).
+- **Folder**: new
 
 ## References
 - OWASP Top Ten: [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
