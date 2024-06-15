@@ -9,6 +9,10 @@
     <div class="container">
         <h2 style="color: #333;">Register</h2>
         <form action="register_user.php" method="post">
+            <?php
+            include 'csrf.php';
+            echo '<input type="hidden" name="csrf_token" value="' . htmlspecialchars(generateCSRFToken()) . '">';
+            ?>
             <input type="text" name="first_name" placeholder="First Name" required>
             <input type="text" name="last_name" placeholder="Last Name" required>
             <input type="email" name="email" placeholder="Email" required>

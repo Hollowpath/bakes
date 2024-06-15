@@ -173,18 +173,23 @@ $mysqli->close();
 </div>
 
 <!-- Contact/Area Container -->
+<?php
+include 'csrf.php';
+?>
 <div class="w3-container" id="where" style="padding-bottom:32px;">
     <div class="w3-content" style="max-width:700px">
         <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">RESERVE A TABLE</span></h5>
         <form action="process_reservation.php" method="POST">
-          <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-          <p><button class="w3-button w3-black" type="submit">SUBMIT</button></p>
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generateCSRFToken()); ?>">
+            <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+            <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
+            <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+            <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+            <p><button class="w3-button w3-black" type="submit">SUBMIT</button></p>
         </form>
     </div>
 </div>
+
 
 <!-- End page content -->
 </div>

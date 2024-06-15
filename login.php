@@ -9,6 +9,10 @@
     <div class="container">
         <h2 style="color: #333;">Login</h2>
         <form action="authenticate.php" method="post">
+            <?php
+            include 'csrf.php';
+            echo '<input type="hidden" name="csrf_token" value="' . htmlspecialchars(generateCSRFToken()) . '">';
+            ?>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login" style="background-color: #4CAF50;">

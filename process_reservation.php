@@ -1,4 +1,9 @@
 <?php
+include 'csrf.php'; // Include the CSRF token functions
+
+// Start the session to handle CSRF tokens
+session_start();
+
 // Fetch database configuration from environment variables
 $db_host = getenv('DB_HOST');
 $db_user = getenv('DB_USER');
@@ -14,9 +19,15 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-// Check if all required fields are submitted
-if (!isset($_POST['Name'], $_POST['People'], $_POST['date'], $_POST['Message'])) {
+// Check if all required fields are submitted, including CSRF token
+if (!isset($_POST['csrf_token'], $_POST['Name'], $_POST['People'], $_POST['date'], $_POST['Message'])) {
     echo "All fields are required.";
+    exit();
+}
+
+// Validate CSRF token
+if (!validateCSRFToken($_POST['csrf_token'])) {
+    echo "CSRF token validation failed.";
     exit();
 }
 
@@ -33,8 +44,8 @@ $insert_query = "INSERT INTO reservations (name, people, reservation_datetime, m
 // Execute query and handle results
 if ($mysqli->query($insert_query) === TRUE) {
     // Reservation successful
-    echo "Reservation successful!";
-    // Redirect or display success message as needed
+    header("Location: thank_you.php");
+    exit();
 } else {
     // Reservation failed
     echo "Error: " . $insert_query . "<br>" . $mysqli->error;
