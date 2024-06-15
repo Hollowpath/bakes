@@ -45,7 +45,7 @@
     <div class="container">
         <h2>Thank You for Your Reservation!</h2>
         <p>Your reservation has been successfully submitted.</p>
-        <a href="index.php">Go Back to Home</a>
+        <a href="index">Go Back to Home</a>
     </div>
 </body>
 </html>

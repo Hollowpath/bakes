@@ -4,7 +4,7 @@ session_start();
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login page if not logged in
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }
 
@@ -16,7 +16,7 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
     // Session expired, log out user
     session_unset();     // Unset all session variables
     session_destroy();   // Destroy the session data
-    header("Location: login.php?timeout=true"); // Redirect to login page with timeout parameter
+    header("Location: login?timeout=true"); // Redirect to login page with timeout parameter
     exit();
 } else {
     $_SESSION['last_activity'] = time(); // Update last activity timestamp
@@ -105,7 +105,7 @@ $mysqli->close();
             <div class="w3-dropdown-hover">
                 <button class="w3-button w3-black">Welcome, <?php echo $first_name; ?></button>
                 <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="logout.php" class="w3-bar-item w3-button">Logout</a>
+                    <a href="logout" class="w3-bar-item w3-button">Logout</a>
                 </div>
             </div>
         </div>
@@ -202,7 +202,7 @@ include 'csrf.php';
 <div class="w3-container" id="where" style="padding-bottom:32px;">
     <div class="w3-content" style="max-width:700px">
         <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">RESERVE A TABLE</span></h5>
-        <form action="process_reservation.php" method="POST">
+        <form action="process_reservation" method="POST">
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generateCSRFToken()); ?>">
             <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
             <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>

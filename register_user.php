@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             echo "Registration successful!";
-            header("Location: login.php");
+            header("Location: login");
             exit();
         } else {
             echo "Error: " . $stmt->error;

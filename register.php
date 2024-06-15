@@ -20,7 +20,7 @@
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Register" style="background-color: #4CAF50;">
         </form>
-        <p style="color: #333;">Already have an account? <a href="login.php" style="color: #007bff;">Login here</a></p>
+        <p style="color: #333;">Already have an account? <a href="login" style="color: #007bff;">Login here</a></p>
     </div>
 </body>
 </html>

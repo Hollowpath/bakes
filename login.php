@@ -8,7 +8,7 @@
 <body style="background-color: #66ccff;">
     <div class="container">
         <h2 style="color: #333;">Login</h2>
-        <form action="authenticate.php" method="post">
+        <form action="authenticate" method="post">
             <?php
             include 'csrf.php';
             echo '<input type="hidden" name="csrf_token" value="' . htmlspecialchars(generateCSRFToken()) . '">';
@@ -17,7 +17,7 @@
             <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login" style="background-color: #4CAF50;">
         </form>
-        <p style="color: #333;">Don't have an account? <a href="register.php" style="color: #007bff;">Register here</a></p>
+        <p style="color: #333;">Don't have an account? <a href="register" style="color: #007bff;">Register here</a></p>
     </div>
 </body>
 </html>

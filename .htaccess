@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Redirect to clean URL without .php if .php is explicitly included in URL
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?/] [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# If the request is for a file or directory that exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite to remove the .php extension
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L,QSA]
+
+# Prevent directory paths from being rewritten
+RewriteRule ^(.*)/$ $1 [L,R=301]

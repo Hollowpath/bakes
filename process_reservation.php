@@ -44,7 +44,7 @@ $insert_query = "INSERT INTO reservations (name, people, reservation_datetime, m
 // Execute query and handle results
 if ($mysqli->query($insert_query) === TRUE) {
     // Reservation successful
-    header("Location: thank_you.php");
+    header("Location: thank_you");
     exit();
 } else {
     // Reservation failed
