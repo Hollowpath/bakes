@@ -1,27 +1,34 @@
 <?php
 session_start();
 
-// Set session timeout to 2 minutes (120 seconds)
-ini_set('session.gc_maxlifetime', 120);
-
-// Regenerate session ID every time the user's privilege level changes or on a timer
-session_regenerate_id(true);
-
-// Check if the user is logged in by verifying the session variable
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to login page if the user is not logged in
+    // Redirect to login page if not logged in
     header("Location: login.php");
     exit();
 }
 
-// Update last activity time stamp to extend session
-$_SESSION['last_activity'] = time();
+// Set session timeout to 5 minutes (300 seconds)
+$timeout = 300; // 1 hour in seconds
 
-$db_host = $_SERVER['DB_HOST'];
-$db_user = $_SERVER['DB_USER'];
-$db_password = $_SERVER['DB_PASSWORD'];
-$db_name = $_SERVER['DB_NAME'];
+// Check if last activity timestamp is set
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+    // Session expired, log out user
+    session_unset();     // Unset all session variables
+    session_destroy();   // Destroy the session data
+    header("Location: login.php?timeout=true"); // Redirect to login page with timeout parameter
+    exit();
+} else {
+    $_SESSION['last_activity'] = time(); // Update last activity timestamp
+}
 
+// Fetch database configuration from environment variables or other secure methods
+$db_host = getenv('DB_HOST');
+$db_user = getenv('DB_USER');
+$db_password = getenv('DB_PASSWORD');
+$db_name = getenv('DB_NAME');
+
+// Create a new MySQLi instance
 $mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
 
 if ($mysqli->connect_errno) {
@@ -136,7 +143,6 @@ $mysqli->close();
         <p><strong>Address:</strong> 15 Adr street, 5015, NY</p>
     </div>
 </div>
-
 <!-- Menu Container -->
 <div class="w3-container" id="menu">
     <div class="w3-content" style="max-width:700px">
