@@ -3,9 +3,9 @@
 ## Team Members
 | Name                              | Matric No. |
 |-----------------------------------|------------|
-| [Your Name]                       | [Your Matric No.] |
-| [Teammate 1 Name]                 | [Matric No.] |
-| [Teammate 2 Name]                 | [Matric No.] |
+| Faizal Akhtar Bin Azhar           | 2124565    |
+| Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261    |
+| Bashir Md Monjur                  | 2028113    |
 
 ## Title
 **Restaurant Reservation System - Enhanced Security**
