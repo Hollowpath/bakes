@@ -20,11 +20,11 @@ The objective of these enhancements is to ensure the security and integrity of t
 
 ### 1. Input Validation
 #### Client-Side Validation
-- **Elements Validated**: Email, password, first name, last name, phone, reservation details.
-- **Technique**: HTML5 attributes such as `required`, `type`, `pattern`, and JavaScript for complex validation.
+- **Elements Validated**: Name, number of people, date and time, message.
+- **Technique**: HTML5 attributes such as `required`, `type`, and JavaScript for additional validation.
   
 #### Server-Side Validation
-- **Elements Validated**: Email, password, first name, last name, phone, reservation details.
+- **Elements Validated**: Name, number of people, date and time, message.
 - **Technique**: PHP functions like `filter_var()`, `htmlspecialchars()`, `trim()`, and `mysqli_real_escape_string()`.
 
 ### 2. Authentication
@@ -72,9 +72,14 @@ The objective of these enhancements is to ensure the security and integrity of t
   - Disabled directory traversal.
   - Sanitized file uploads and URL parameters.
 
-### 7. Additional Enhancements
-- **Clean/Pretty URLs**: Implemented URL rewriting to create user-friendly URLs.
-- **Session Expiration**: Configured sessions to expire after a certain period of inactivity.
+### 7. Original and Enhanced Source Code Repositories
+#### Original Source Code
+- **Folder**: Original
+- **Contents**: Contains the original web application files including Models, Views, and Controllers subfolders (before enhancement).
+
+#### Enhanced Source Code
+- **Folder**: Enhanced
+- **Contents**: Contains the enhanced web application files with security elements or components including Models, Views, and Controllers subfolders (after enhancement).
 
 ## References
 - OWASP Top Ten: [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
