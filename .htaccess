@@ -1,5 +1,11 @@
 RewriteEngine On
 
+# Force HTTPS
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
 # Redirect to clean URL without .php if .php is explicitly included in URL
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?/] [NC]
 RewriteRule ^ %1 [R=301,L]
@@ -8,8 +14,11 @@ RewriteRule ^ %1 [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Rewrite to remove the .php extension
+# Rewrite to add .php extension if it's not explicitly included
 RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L,QSA]
 
 # Prevent directory paths from being rewritten
 RewriteRule ^(.*)/$ $1 [L,R=301]
+
+# Serve index.php by default when accessing the root URL
+DirectoryIndex index.php
