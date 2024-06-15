@@ -1,11 +1,11 @@
 # Macania Bakes - Web Application Security Enhancement
 
 ## Team Members
-| Name               | Matric No    |
-|--------------------|--------------|
-| Faizal Akhtar Bin Azhar        | 2124565 |
-| Wan Mohd Nazim Bin Wan Muhamad Saidin  | 2114261 |
-| Bashir Md Monjur  | 2028113 |
+| Name                              | Matric No  |
+|-----------------------------------|------------|
+| Faizal Akhtar Bin Azhar           | 2124565    |
+| Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261    |
+| Bashir Md Monjur                  | 2028113    |
 
 ## Title
 **Macania Bakes - Secure Online Reservation System**
@@ -36,7 +36,7 @@ The objective of these enhancements is to ensure the security and integrity of t
 ### 3. Authorization
 - **Method Used**: Role-based access control.
 - **Enhancements**:
-  - Users are assigned roles (e.g., user, admin) upon registration.
+  - Users are assigned as user upon registration.
   - Access to specific pages and functionalities is restricted based on user roles.
 
 ### 4. XSS and CSRF Prevention
@@ -56,11 +56,11 @@ The objective of these enhancements is to ensure the security and integrity of t
 - **Method Used**: Prepared statements.
 - **Enhancements**:
   - Used `mysqli_prepare()` and `bind_param()` to safely execute SQL queries.
+  - **Disabled MySQL error messages** to avoid leaking sensitive information.
 
 #### Database Connection and Server Enhancements
 - **Technique**:
   - Stored database credentials in environment variables to hide passwords from source code.
-  - Disabled MySQL error messages to avoid leaking sensitive information.
   - Set strong passwords for MySQL root accounts.
   - Created new privileges and restricted access to only necessary permissions.
 
@@ -69,15 +69,8 @@ The objective of these enhancements is to ensure the security and integrity of t
 - **Settings and Configurations**:
   - Restricted file permissions on the server.
   - Configured `.htaccess` to deny access to sensitive directories and files.
-  - Disabled directory traversal.
+  - **Disabled directory traversal**.
   - Sanitized file uploads and URL parameters.
-
-### 7. Original and Enhanced Source Code Repositories
-#### Original Source Code
-- **Folder**: old
-
-#### Enhanced Source Code
-- **Folder**: new
 
 ## References
 - OWASP Top Ten: [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
