@@ -1,4 +1,4 @@
-# Web Application Security Enhancement
+# INFO 4345 Web Application Security | Group Project
 
 ## Project Overview
 This project aims to enhance the security of the Macania Bakes web application originally developed in the Web Technologies course (INFO 2302). Various security components and best practices were implemented to secure the application.
@@ -72,7 +72,7 @@ The objective is to implement essential web application security practices to pr
 
 
 ### GitHub Repository
-- Repository URL: [Insert GitHub Repository URL]
+- Repository URL: [INFO 4345 Web Application Security | Group Project](https://github.com/Hollowpath/bakes)
 - The repository contains:
   - Original: Contains the original web application files (before enhancements).
   - Enhanced: Contains the enhanced web application files with security components.
