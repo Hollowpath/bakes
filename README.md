@@ -24,28 +24,52 @@ The objective is to implement essential web application security practices to pr
    - Implemented validation for user inputs across forms:
      - Client-side using JavaScript.
      - Server-side using PHP's `filter_var` and `mysqli_real_escape_string`.
+     - Regular expressions (regex) used to enforce specific input formats.
 
 2. **Authentication**
-   - Implemented authentication with hashed passwords using PHP's `password_hash` and `password_verify`.
-   - Sessions managed securely to prevent session fixation attacks.
+   - Implemented secure authentication system:
+     - User login/register functionality.
+     - Passwords hashed using PHP's `password_hash` and verified with `password_verify`.
+     - Sessions managed securely with encryption and expiration to prevent session fixation attacks.
 
 3. **Authorization**
    - Role-based access control (RBAC) implemented:
-     - Different access levels (`user`, `admin`) based on user roles stored in the database.
+     - Different access levels `user` based on user roles stored in the database.
 
 4. **XSS and CSRF Prevention**
-   - Implemented CSRF protection using a token generated with `random_bytes` and stored in session.
-   - Output escaping with `htmlspecialchars` to prevent XSS attacks.
+   - Implemented CSRF protection:
+     - CSRF tokens generated for every form submission using `random_bytes` and stored in session.
+     - Output escaping with `htmlspecialchars` to prevent XSS attacks.
 
 5. **Database Security Principles**
    - Prevented SQL injection using prepared statements (`mysqli_prepare`).
+   - Database credentials securely stored and not exposed in source code.
 
 6. **File Security Principles**
-   - Applied secure settings and configurations to the web server to protect sensitive files and directories.
+   - Applied secure settings and configurations to the XAMPP web server:
+     - Disabled MySQL error messages to prevent information leakage.
+     - Disabled directory traversal to protect against unauthorized file access.
+     - Implemented SSL (HTTPS) to encrypt data transmitted between client and server.
+
+7. **Additional Security Measures**
+   - Sanitized and validated input data to ensure data integrity.
+   - Implemented clean and pretty URLs to enhance usability and security.
+   - Created new privileges for MySQL (phpMyAdmin) to restrict access based on roles.
+   - Set strong passwords for MySQL (phpMyAdmin) accounts to prevent unauthorized access.
 
 ### References
-- [PHP Manual](https://www.php.net/manual/en/)
-- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+- **OWASP Top Ten**: Guidance on the top ten critical web application security risks and how to mitigate them effectively.
+  - [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+
+- **PHP Security Guide**: Best practices and guidelines for securing PHP applications, covering authentication, input validation, and more.
+  - [PHP Security Guide](https://php.net/manual/en/security.php)
+
+- **XAMPP Documentation**: Documentation on configuring and securing XAMPP, ensuring a secure local development environment.
+  - [XAMPP Documentation](https://www.apachefriends.org/docs/)
+
+- **MySQL Documentation**: Comprehensive documentation on securing MySQL databases, covering user management, access controls, and secure connections.
+  - [MySQL Documentation](https://dev.mysql.com/doc/)
+
 
 ### GitHub Repository
 - Repository URL: [Insert GitHub Repository URL]
