@@ -49,7 +49,6 @@ The objective is to implement essential web application security practices to pr
    - Applied secure settings and configurations to the XAMPP web server:
      - Disabled MySQL error messages to prevent information leakage.
      - Disabled directory traversal to protect against unauthorized file access.
-     - Implemented SSL (HTTPS) to encrypt data transmitted between client and server.
 
 7. **Additional Security Measures**
    - Sanitized and validated input data to ensure data integrity.
