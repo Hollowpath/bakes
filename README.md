@@ -34,7 +34,7 @@ The objective is to implement essential web application security practices to pr
 
 3. **Authorization**
    - Role-based access control (RBAC) implemented:
-     - Different access levels `user` based on user roles stored in the database.
+     - Only `user` can access the web and make reservations.
 
 4. **XSS and CSRF Prevention**
    - Implemented CSRF protection:
