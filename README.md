@@ -53,7 +53,7 @@ The objective is to implement essential web application security practices to pr
 7. **Additional Security Measures**
    - Sanitized and validated input data to ensure data integrity.
    - Implemented clean and pretty URLs to enhance usability and security.
-   - Created new privileges for MySQL (phpMyAdmin) to restrict access based on roles.
+   - Created new privileges `manager` for MySQL (phpMyAdmin) to only performing CRUD.
    - Set strong passwords for MySQL (phpMyAdmin) accounts to prevent unauthorized access.
 
 ### References
