@@ -8,7 +8,7 @@
 <body style="background-color: #ffcc00;">
     <div class="container">
         <h2 style="color: #333;">Register</h2>
-        <form action="register_user.php" method="post">
+        <form action="register_user" method="post">
             <?php
             include 'csrf.php';
             echo '<input type="hidden" name="csrf_token" value="' . htmlspecialchars(generateCSRFToken()) . '">';
