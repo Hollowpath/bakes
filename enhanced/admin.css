@@ -1,0 +1,100 @@
+/* Reset and General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #444;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a.active {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+/* Button Styles */
+.btn-container {
+    text-align: center;
+}
+
+.btn-container form {
+    display: inline;
+}
+
+.btn-container button {
+    margin: 5px;
+    padding: 8px 16px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-container button[value="accept"] {
+    background-color: #4CAF50; /* Green */
+}
+
+.btn-container button[value="reject"] {
+    background-color: #f44336; /* Red */
+}
+
+.btn-container button:hover {
+    opacity: 0.9;
+}

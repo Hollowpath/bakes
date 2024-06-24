@@ -8,8 +8,15 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Set session timeout to 5 minutes (300 seconds)
-$timeout = 300; // 1 hour in seconds
+// Check if user is admin
+if ($_SESSION['role'] === 'admin') {
+    // Redirect to unauthorized page
+    header("Location: admin");
+    exit();
+}
+
+// Set session timeout to 10 minutes (600 seconds)
+$timeout = 600;
 
 // Check if last activity timestamp is set
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
