@@ -98,7 +98,42 @@ The objective is to implement essential web application security practices to pr
 
 5. **Database Security Principles**
    - Prevented SQL injection using prepared statements (`mysqli_prepare`).
-   - Database credentials securely stored and not exposed in source code.
+   - Database credentials securely stored and not exposed in source code;
+      Create a .env file in the root directory of project:
+      ```.env
+      DB_HOST=localhost
+      DB_USER=manager
+      DB_PASSWORD=@Manager1
+      DB_NAME=bakes
+      ```
+      Snippet from login.php:
+      ```authenticate.php:
+      <?php
+      include 'csrf.php';
+
+      session_start(); // Start the session at the beginning
+
+      // Fetch database configuration from environment variables
+      $db_host = getenv('DB_HOST');
+      $db_user = getenv('DB_USER');
+      $db_password = getenv('DB_PASSWORD');
+      $db_name = getenv('DB_NAME');
+
+      // Create a new MySQLi instance
+      $mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
+
+      // Check connection
+      if ($mysqli->connect_errno) {
+          echo "Failed to connect to MySQL: " . htmlspecialchars($mysqli->connect_error);
+          exit();
+      }
+
+      // ... REST OF THE CODE FOR HANDLING LOGIN ...
+
+      // Close MySQLi connection
+      $mysqli->close();
+      ?>
+      ```
 
 6. **File Security Principles**
    - Applied secure settings and configurations to the XAMPP web server:
