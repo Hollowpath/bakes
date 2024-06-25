@@ -89,3 +89,36 @@ The objective is to implement essential web application security practices to pr
  
 ### Nazim work
 ![Login Page](https://drive.google.com/uc?export=view&id=1vKyJkOVHFhuoMZxrTkFpEjC6IBl0z2YK)
+- Build login page from scratch because the original website did not have any login page.
+
+![Login Snippet](https://drive.google.com/uc?export=view&id=1RsgQzzaYjaP1o0uUhiy3kflM0sPq2LPt)
+- This is a code snippet of the client-side interface for the login page. 
+- I include csrf.php in the code for CSRF token. 
+
+![Register Page](https://drive.google.com/uc?export=view&id=1UJdJHsVLBmWSuRtLG0DWq8zXROgEd2LM)
+- Build registration page from scratch because the original website did not have any registration page. 
+
+![Register Code](https://drive.google.com/uc?export=view&id=1q0U6Cz3AsEugqSl7GWB-aI5Q_ZsGX9E_)
+- This is a code snippet of the client-side interface for the registration page. 
+- I include csrf.php in the code for CSRF token. 
+
+![Authenticate](https://drive.google.com/uc?export=view&id=1Su7b_M-8MXJSe0vx1gin3or9F3FraVBa)
+- Authentication code snippet. Implementing csrf.php in the code. 
+- Implement sanitization for email and password.
+
+![User Database](https://drive.google.com/uc?export=view&id=1IF8TSbYFaJO5J3tQo7GyFWUg7Cuj6ffJ)
+- Build users database that save id, first_name, last_name, email, phone, password and role.
+
+![CSRF](https://drive.google.com/uc?export=view&id=1iraXsnTSq_rABh2_ji7bvtDts-6Xq4Rg)
+- The main CSRF file that can generate random CSRF tokens.
+
+![Regexes](https://drive.google.com/uc?export=view&id=1VWKq20Qwzib4lFbGlo6BeyU_SEuH66ng)
+- Code snippet in register_user.php
+- Checking the CSRF token
+- Sanitize validate inputs like first_name, last_name, email, phone, password
+- Adding regexes on name_pattern, phone_pattern and password_pattern
+
+![Hashing](https://drive.google.com/uc?export=view&id=1i6QWB9nXpPLOsnFtuUPXK23pmqwzBnSI)
+- Code snippet in register_user.php
+- Validate inputs using regex patterns
+- Hashing the password 
