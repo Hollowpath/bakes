@@ -79,7 +79,7 @@ The objective is to implement essential web application security practices to pr
   - [MySQL Documentation](https://dev.mysql.com/doc/)
 
 - **Weekly Progress Report:**
-   - [Weekly Progress Report]([https://drive.google.com/drive/folders/1qwGULt8k9e0URn2TiRkVQ1wK0_umDy9K](https://drive.google.com/file/d/1umIIF8qrBesdhwAxblqFnm19tvKMbgoa/view))
+   - [Weekly Progress Report](https://drive.google.com/file/d/1umIIF8qrBesdhwAxblqFnm19tvKMbgoa/view)
 
 ### GitHub Repository
 - Repository URL: [INFO 4345 Web Application Security | Group Project](https://github.com/Hollowpath/bakes)
