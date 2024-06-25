@@ -108,7 +108,7 @@ The objective is to implement essential web application security practices to pr
       DB_NAME=bakes
       ```
       Snippet from `login.php`:
-      ```php:
+      ```php
       <?php
       include 'csrf.php';
 
