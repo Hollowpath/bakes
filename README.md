@@ -101,14 +101,14 @@ The objective is to implement essential web application security practices to pr
    - Database credentials securely stored and not exposed in source code;
       Create a `.env` file in the root directory of project:
       `.env`:
-      ```.env
+      ```env
       DB_HOST=localhost
       DB_USER=manager
       DB_PASSWORD=@Manager1
       DB_NAME=bakes
       ```
       Snippet from `login.php`:
-      ```authenticate.php:
+      ```php:
       <?php
       include 'csrf.php';
 
@@ -135,33 +135,75 @@ The objective is to implement essential web application security practices to pr
       $mysqli->close();
       ?>
       ```
-
+      
 6. **File Security Principles**
    - Applied secure settings and configurations to the XAMPP web server:
-     - Disabled MySQL error messages to prevent information leakage.
-     - Disabled directory traversal to protect against unauthorized file access.
+     - Disabled MySQL error messages to prevent information leakage;
+        1. Navigate to XAMPP installation directory.
+        2. Inside `my.ini`, find the `[mysqld]` section.
+        3. Add or modify the following lines to disable error messages:
+          ```ini
+          [mysqld]
+          # Other existing configurations...
+
+          # Disable error log warnings
+          log_error_suppression=1
+
+          # Disable stack trace on errors
+          show_compatibility_56=OFF
+
+          # Disable warning messages
+          log_warnings=0
+          ```
+          * `log_error_suppression=1`: Prevents error log warnings.
+          * `show_compatibility_56=OFF`: Disables stack traces on errors (works for MySQL 5.7+).
+          * `log_warnings=0`: Disables warning messages.
+     - Disabled directory traversal to protect against unauthorized file access;
+          1. Navigate to your XAMPP installation directory.
+          2. Open the httpd.conf file within the Apache directory, usually at `C:\xampp\apache\conf\httpd.conf`.
+          3. Search for mod_rewrite in httpd.conf and uncomment the line by removing the `#` at the beginning of the line:
+              ```apache
+              LoadModule rewrite_module modules/mod_rewrite.so
+              ```
+          4. Below the `LoadModule` line, add the following directives to configure `mod_rewrite` to prevent directory traversal:
+              ```apache
+              <IfModule mod_rewrite.c>
+                  RewriteEngine On
+                  RewriteCond %{REQUEST_FILENAME} -d [OR]
+                  RewriteCond %{REQUEST_FILENAME} -f
+                  RewriteRule ^.*$ - [L]
+                  RewriteRule ^../ / [R=404,L]
+              </IfModule>
+              ```
+              * The above rules check if the requested file or directory exists (`-d` for directory, `-f` for file). If it does, the request proceeds (`RewriteRule ^.*$ - [L]`). Otherwise, it returns a 404 Not Found error for requests containing ../ (`RewriteRule ^../ / [R=404,L]`).
 
 7. **Additional Security Measures**
    - Sanitized and validated input data to ensure data integrity.
    - Implemented clean and pretty URLs to enhance usability and security.
    - Created new privileges `manager` for MySQL (phpMyAdmin) to only performing CRUD.
-   - Set strong passwords for MySQL (phpMyAdmin) accounts to prevent unauthorized access.
+   - Set strong passwords for MySQL (phpMyAdmin) accounts to prevent unauthorized access;
+      1. Open web browser and go to `http://localhost/phpmyadmin` (assuming XAMPP is installed locally and using default settings).
+      2. Click on the "User accounts" tab at the top of the phpMyAdmin interface.
+      3. Click on the "Edit privileges" icon (a small pencil) next to the root user.
+      4. In the "Change password" section, enter your new password in the "Password" field.
+      5. Scroll down and click on the "Go" button at the bottom to save the changes.
+
    - Implement SSL;
       1. PHP Configuration (`php.ini`):
       uncomment this line by removing `;` symbol.
-      ```php.ini
+      ```ini
       extension=openssl
       ```
 
       2. Apache Configuration (`httpd.conf`):
       Ensure that `mod_rewrite` module is enabled (no `#` in front of `LoadModule rewrite_module modules/mod_rewrite.so`).
-      ```httpd.conf
+      ```conf
       LoadModule rewrite_module modules/mod_rewrite.so
       ```
 
       3. Certificate Creation and Configuration:
       creating the `V3.ext` file and modifying the `makecert.bat` script in `C:\xampp\apache\makecert.bat`, ensure the command includes `-extfile v3.ext`:
-      ```makecert.bat
+      ```bat
       bin\openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 365 -extfile v3.ext
       ```
       4. After generating the certificate, import it into the Trusted Root Certification Authorities using `certmgr.msc`.
