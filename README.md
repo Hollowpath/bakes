@@ -4,11 +4,11 @@
 This project aims to enhance the security of the Macania Bakes web application originally developed in the Web Technologies course (INFO 2302). Various security components and best practices were implemented to secure the application.
 
 ### Group Members
-| Name                 | Matric No.     |
-|----------------------|----------------|
-| Faizal Akhtar Bin Azhar             | 2124565     |
-| Wan Mohd Nazim Bin Wan Muhamad Saidin           | 2114261     |
-| Bashir Md Monjur      | 2028113     |
+| Name                            | Matric Number | Assigned Tasks                                            | Participation |
+|---------------------------------|---------------|-----------------------------------------------------------|---------------|
+| Bashir Md Monjur               | 2028113       |   | 100%          |
+| Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261       |              | 100%          |
+| Faizal Akhtar Bin Azhar        | 2124565       |  | 100%          |
 
 ### Title of the Web Application
 Macania Bakes
