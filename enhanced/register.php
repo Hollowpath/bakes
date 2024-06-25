@@ -6,7 +6,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffcc00; /* Light yellow background */
+            background-color: #333; /* Gray background */
+            color: #000; /* Black text */
             display: flex;
             justify-content: center;
             align-items: center;
