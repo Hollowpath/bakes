@@ -92,6 +92,12 @@ The objective is to implement essential web application security practices to pr
             $_SESSION['last_activity'] = time(); // Update last activity timestamp
         }
         ```
+     - Hashing passwords converts them into fixed-length, irreversible strings.
+        Snippet from `register_user.php`:
+        ```php
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        ```
+
 3. **Authorization**
    - Role-based access control (RBAC) implemented:
      - Only `user` can access the web and make reservations.
