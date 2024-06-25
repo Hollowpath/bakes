@@ -39,6 +39,7 @@ The objective is to implement essential web application security practices to pr
      - User login/register functionality.
      - Passwords hashed using PHP's `password_hash` and verified with `password_verify`.
      - Sessions managed securely with encryption and expiration to prevent session fixation attacks.
+        
         Snippet from `index.php`:
         ```php
         session_start();
