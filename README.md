@@ -63,7 +63,7 @@ The objective is to implement essential web application security practices to pr
         } else {
             $_SESSION['last_activity'] = time(); // Update last activity timestamp
         }
-
+        ```
         Snippet from `admin.php`:
         ```php
         session_start();
@@ -85,7 +85,7 @@ The objective is to implement essential web application security practices to pr
         } else {
             $_SESSION['last_activity'] = time(); // Update last activity timestamp
         }
-
+        ```
 3. **Authorization**
    - Role-based access control (RBAC) implemented:
      - Only `user` can access the web and make reservations.
