@@ -212,6 +212,15 @@ The objective is to implement essential web application security practices to pr
 
 7. **Additional Security Measures**
    - Sanitized and validated input data to ensure data integrity.
+      Snippet from `register_user.php`:
+      ```php
+      $first_name = htmlspecialchars(trim($_POST['first_name']), ENT_QUOTES, 'UTF-8');
+      $last_name = htmlspecialchars(trim($_POST['last_name']), ENT_QUOTES, 'UTF-8');
+      $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+      $phone = htmlspecialchars(trim($_POST['phone']), ENT_QUOTES, 'UTF-8');
+      $password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES, 'UTF-8');
+      ```
+
    - Implemented clean and pretty URLs to enhance usability and security.
    - Created new privileges `manager` for MySQL (phpMyAdmin) to only performing CRUD.
    - Set strong passwords for MySQL (phpMyAdmin) accounts to prevent unauthorized access;
