@@ -86,3 +86,6 @@ The objective is to implement essential web application security practices to pr
 - The repository contains:
   - Original: Contains the original web application files (before enhancements).
   - Enhanced: Contains the enhanced web application files with security components.
+ 
+### Nazim work
+![Login Page](https://drive.google.com/uc?export=view&id=1vKyJkOVHFhuoMZxrTkFpEjC6IBl0z2YK)
