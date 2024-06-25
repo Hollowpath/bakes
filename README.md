@@ -94,6 +94,7 @@ The objective is to implement essential web application security practices to pr
 4. **XSS and CSRF Prevention**
    - Implemented CSRF protection:
      - CSRF tokens generated for every form submission using `random_bytes` and stored in session.
+     -  ``` 
         Snippet from `csrf.php`:
         ```php
         <?php
