@@ -108,6 +108,7 @@ The objective is to implement essential web application security practices to pr
 
 ![User Database](https://drive.google.com/uc?export=view&id=1IF8TSbYFaJO5J3tQo7GyFWUg7Cuj6ffJ)
 - Build users database that save id, first_name, last_name, email, phone, password and role.
+- You can see the password has been hash
 
 ![CSRF](https://drive.google.com/uc?export=view&id=1iraXsnTSq_rABh2_ji7bvtDts-6Xq4Rg)
 - The main CSRF file that can generate random CSRF tokens.
