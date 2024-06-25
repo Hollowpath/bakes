@@ -7,7 +7,7 @@ This project aims to enhance the security of the Macania Bakes web application o
 | Name                            | Matric Number | Assigned Tasks                                            | Participation |
 |---------------------------------|---------------|-----------------------------------------------------------|---------------|
 | Bashir Md Monjur               | 2028113       |   | 100%          |
-| Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261       |              | 100%          |
+| Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261       | login page, registration page,  | 100%          |
 | Faizal Akhtar Bin Azhar (Leader)       | 2124565       |  | 100%          |
 
 ### Table of Contents:
