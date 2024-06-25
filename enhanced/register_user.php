@@ -42,6 +42,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // Add regex patterns for validation
+    $name_pattern = "/^[a-zA-Z]+$/";
+    $phone_pattern = "/^\d{10}$/";
+    $password_pattern = "/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/";
+
+    // Validate inputs using regex patterns
+    if (!preg_match($name_pattern, $first_name)) {
+        echo "Invalid first name format.";
+        exit();
+    }
+
+    if (!preg_match($name_pattern, $last_name)) {
+        echo "Invalid last name format.";
+        exit();
+    }
+
+    if (!preg_match($phone_pattern, $phone)) {
+        echo "Invalid phone number format.";
+        exit();
+    }
+
+    if (!preg_match($password_pattern, $password)) {
+        echo "Invalid password format. Password must contain at least 8 characters, including uppercase and lowercase letters, and numbers.";
+        exit();
+    }
+
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $role = 'user'; // Assign default role to new users
