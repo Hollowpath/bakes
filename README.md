@@ -134,7 +134,7 @@ The objective is to implement essential web application security practices to pr
       $mysqli->close();
       ?>
       ```
-
+      
 6. **File Security Principles**
    - Applied secure settings and configurations to the XAMPP web server:
      - Disabled MySQL error messages to prevent information leakage.
