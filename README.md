@@ -39,31 +39,30 @@ The objective is to implement essential web application security practices to pr
      - User login/register functionality.
      - Passwords hashed using PHP's `password_hash` and verified with `password_verify`.
      - Sessions managed securely with encryption and expiration to prevent session fixation attacks.
+        Snippet from `index.php`:
+        ```php
+        session_start();
 
-      Snippet from `index.php`:
-      ```php
-      session_start();
+        // Check if user is logged in
+        if (!isset($_SESSION['user_id'])) {
+            // Redirect to login page if not logged in
+            header("Location: login");
+            exit();
+        }
 
-      // Check if user is logged in
-      if (!isset($_SESSION['user_id'])) {
-          // Redirect to login page if not logged in
-          header("Location: login");
-          exit();
-      }
+        // Set session timeout to 10 minutes (600 seconds)
+        $timeout = 600;
 
-      // Set session timeout to 10 minutes (600 seconds)
-      $timeout = 600;
-
-      // Check if last activity timestamp is set
-      if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
-          // Session expired, log out user
-          session_unset();     // Unset all session variables
-          session_destroy();   // Destroy the session data
-          header("Location: login?timeout=true"); // Redirect to login page with timeout parameter
-          exit();
-      } else {
-          $_SESSION['last_activity'] = time(); // Update last activity timestamp
-      }
+        // Check if last activity timestamp is set
+        if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+            // Session expired, log out user
+            session_unset();     // Unset all session variables
+            session_destroy();   // Destroy the session data
+            header("Location: login?timeout=true"); // Redirect to login page with timeout parameter
+            exit();
+        } else {
+            $_SESSION['last_activity'] = time(); // Update last activity timestamp
+        }
 
 3. **Authorization**
    - Role-based access control (RBAC) implemented:
