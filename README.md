@@ -192,7 +192,7 @@ The objective is to implement essential web application security practices to pr
           * `show_compatibility_56=OFF`: Disables stack traces on errors (works for MySQL 5.7+).
           * `log_warnings=0`: Disables warning messages.
      - Disabled directory traversal to protect against unauthorized file access;
-          1. Navigate to your XAMPP installation directory.
+          1. Navigate to XAMPP installation directory.
           2. Open the httpd.conf file within the Apache directory, usually at `C:\xampp\apache\conf\httpd.conf`.
           3. Search for mod_rewrite in httpd.conf and uncomment the line by removing the `#` at the beginning of the line:
               ```apache
@@ -227,7 +227,7 @@ The objective is to implement essential web application security practices to pr
       1. Open web browser and go to `http://localhost/phpmyadmin` (assuming XAMPP is installed locally and using default settings).
       2. Click on the "User accounts" tab at the top of the phpMyAdmin interface.
       3. Click on the "Edit privileges" icon (a small pencil) next to the root user.
-      4. In the "Change password" section, enter your new password in the "Password" field.
+      4. In the "Change password" section, enter new password in the "Password" field.
       5. Scroll down and click on the "Go" button at the bottom to save the changes.
 
    - Implement SSL;
