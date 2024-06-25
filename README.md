@@ -94,28 +94,27 @@ The objective is to implement essential web application security practices to pr
 4. **XSS and CSRF Prevention**
    - Implemented CSRF protection:
      - CSRF tokens generated for every form submission using `random_bytes` and stored in session.
-       ```
-      Snippet from `csrf.php`:
-      ```php
-     <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+        Snippet from `csrf.php`:
+        ```php
+        <?php
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-// CSRF token generation function
-function generateCSRFToken() {
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION['csrf_token'];
-}
+        // CSRF token generation function
+        function generateCSRFToken() {
+            if (empty($_SESSION['csrf_token'])) {
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+            }
+            return $_SESSION['csrf_token'];
+        }
 
-// CSRF token validation function
-function validateCSRFToken($token) {
-    return hash_equals($_SESSION['csrf_token'], $token);
-}
-?>
-```
+        // CSRF token validation function
+        function validateCSRFToken($token) {
+            return hash_equals($_SESSION['csrf_token'], $token);
+        }
+        ?>
+        ```
      - Output escaping with `htmlspecialchars` to prevent XSS attacks.
 
 5. **Database Security Principles**
