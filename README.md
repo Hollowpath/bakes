@@ -64,6 +64,28 @@ The objective is to implement essential web application security practices to pr
             $_SESSION['last_activity'] = time(); // Update last activity timestamp
         }
 
+        Snippet from `admin.php`:
+        ```php
+        session_start();
+
+        // Check if user is logged in and is admin
+        if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+            // Redirect to unauthorized page
+            header("Location: login");
+            exit();
+        }
+
+        // Check if session timeout
+        $timeout = 600; // 10 minutes
+        if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $timeout)) {
+            session_unset();     // Unset all session variables
+            session_destroy();   // Destroy the session data
+            header("Location: login?timeout=true"); // Redirect to login page with timeout parameter
+            exit();
+        } else {
+            $_SESSION['last_activity'] = time(); // Update last activity timestamp
+        }
+
 3. **Authorization**
    - Role-based access control (RBAC) implemented:
      - Only `user` can access the web and make reservations.
