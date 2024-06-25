@@ -34,7 +34,7 @@ if (!validateCSRFToken($_POST['csrf_token'])) {
 $namePattern = '/^[a-zA-Z\s]+$/'; // Only allow alphabets and spaces
 $peoplePattern = '/^(1?[0-9]|20)$/'; // Only allow digits from 1 to 20
 $datePattern = '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/'; // Date format: YYYY-MM-DDTHH:MM
-$messagePattern = '/^[a-zA-Z0-9\s!"#$%&\'()*+,-.\/:;<=>?@\[\\\]^_`{|}~]+$/'; // Allow alphabets, digits, spaces, and symbols on qwerty keyboard
+$messagePattern = '/^[\w\s()"\',.]+$/'; // Allow all characters on the QWERTY keyboard, spaces, (), "', and .
 
 // Validate inputs using regex
 if (!preg_match($namePattern, $_POST['Name'])) {
