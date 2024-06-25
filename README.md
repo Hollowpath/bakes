@@ -33,6 +33,12 @@ The objective is to implement essential web application security practices to pr
      - Client-side using JavaScript.
      - Server-side using PHP's `filter_var` and `mysqli_real_escape_string`.
      - Regular expressions (regex) used to enforce specific input formats.
+       Snippet from `register_user.php`:
+       ```php 
+       $name_pattern = "/^[a-zA-Z]+$/";
+       $phone_pattern = "/^\d{10}$/";
+       $password_pattern = "/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/";
+       ```
 
 2. **Authentication**
    - Implemented secure authentication system:
