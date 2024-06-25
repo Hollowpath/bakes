@@ -16,6 +16,7 @@ This project aims to enhance the security of the Macania Bakes web application o
 - [Objective of the Enhancements](#objective-of-the-enhancements)
 - [Web Application Security Enhancements](#web-application-security-enhancements)
 - [References](#references)
+- [GitHub Repository](#github-repository)
 
 ### Title of the Web Application
 Macania Bakes
