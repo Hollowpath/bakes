@@ -30,6 +30,32 @@ if (!validateCSRFToken($_POST['csrf_token'])) {
     echo "CSRF token validation failed.";
     exit();
 }
+// Define regex patterns for each input
+$namePattern = '/^[a-zA-Z\s]+$/'; // Only allow alphabets and spaces
+$peoplePattern = '/^(1?[0-9]|20)$/'; // Only allow digits from 1 to 20
+$datePattern = '/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/'; // Date format: YYYY-MM-DDTHH:MM
+$messagePattern = '/^[a-zA-Z0-9\s()"\',.]+$/'; // Only allow alphabets, digits, spaces, (), "', and .
+
+// Validate inputs using regex
+if (!preg_match($namePattern, $_POST['Name'])) {
+    echo "Invalid name.";
+    exit();
+}
+
+if (!preg_match($peoplePattern, $_POST['People'])) {
+    echo "Invalid number of people.";
+    exit();
+}
+
+if (!preg_match($datePattern, $_POST['date'])) {
+    echo "Invalid date.";
+    exit();
+}
+
+if (!preg_match($messagePattern, $_POST['Message'])) {
+    echo "Invalid message.";
+    exit();
+}
 
 // Sanitize and escape user inputs (assuming they come from a form)
 $name = $mysqli->real_escape_string($_POST['Name']);
