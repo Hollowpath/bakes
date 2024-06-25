@@ -1,4 +1,4 @@
-# INFO 4345 Web Application Security | Group Project
+# INFO 4345 Web Application Security | Indigo Hat
 
 ## Project Overview
 This project aims to enhance the security of the Macania Bakes web application originally developed in the Web Technologies course (INFO 2302). Various security components and best practices were implemented to secure the application.
