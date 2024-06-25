@@ -38,7 +38,7 @@ The objective is to implement essential web application security practices to pr
    - Implemented secure authentication system:
      - User login/register functionality.
      - Passwords hashed using PHP's `password_hash` and verified with `password_verify`.
-     - Sessions managed securely with encryption and expiration to prevent session fixation attacks.
+     - Sessions managed securely with encryption and expiration to prevent session fixation attacks;
         Snippet from `index.php`:
         ```php
         session_start();
@@ -110,6 +110,25 @@ The objective is to implement essential web application security practices to pr
    - Implemented clean and pretty URLs to enhance usability and security.
    - Created new privileges `manager` for MySQL (phpMyAdmin) to only performing CRUD.
    - Set strong passwords for MySQL (phpMyAdmin) accounts to prevent unauthorized access.
+   - Implement SSL;
+      1. PHP Configuration (`php.ini`):
+      uncomment this line by removing `;` symbol.
+      ```php.ini
+      extension=openssl
+      ```
+
+      2. Apache Configuration (`httpd.conf`):
+      Ensure that `mod_rewrite` module is enabled (no `#` in front of `LoadModule rewrite_module modules/mod_rewrite.so`).
+      ```httpd.conf
+      LoadModule rewrite_module modules/mod_rewrite.so
+      ```
+
+      3. Certificate Creation and Configuration:
+      creating the `V3.ext` file and modifying the `makecert.bat` script in `C:\xampp\apache\makecert.bat`, ensure the command includes `-extfile v3.ext`:
+      ```makecert.bat
+      bin\openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 365 -extfile v3.ext
+      ```
+      4. After generating the certificate, import it into the Trusted Root Certification Authorities using `certmgr.msc`.
 
 ### References
 - **OWASP Top Ten**: Guidance on the top ten critical web application security risks and how to mitigate them effectively.
