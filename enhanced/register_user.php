@@ -14,7 +14,7 @@ $mysqli = new mysqli($db_host, $db_user, $db_password, $db_name);
 
 // Check connection
 if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: " . htmlspecialchars($mysqli->connect_error);
+    echo "Failed to connect to MySQL: " . htmlspecialchars($mysqli->connect_error, ENT_QUOTES, 'UTF-8');
     exit();
 }
 
@@ -31,12 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Sanitize and validate inputs
-    $first_name = htmlspecialchars(trim($mysqli->real_escape_string($_POST['first_name'])));
-    $last_name = htmlspecialchars(trim($mysqli->real_escape_string($_POST['last_name'])));
-    $email = filter_var($mysqli->real_escape_string($_POST['email']), FILTER_SANITIZE_EMAIL);
-    $phone = htmlspecialchars(trim($mysqli->real_escape_string($_POST['phone'])));
-    $password = htmlspecialchars(trim($_POST['password']));
+    $first_name = htmlspecialchars(trim($_POST['first_name']), ENT_QUOTES, 'UTF-8');
+    $last_name = htmlspecialchars(trim($_POST['last_name']), ENT_QUOTES, 'UTF-8');
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $phone = htmlspecialchars(trim($_POST['phone']), ENT_QUOTES, 'UTF-8');
+    $password = htmlspecialchars(trim($_POST['password']), ENT_QUOTES, 'UTF-8');
 
+    // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format.";
         exit();
@@ -64,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (!preg_match($password_pattern, $password)) {
-        echo "Invalid password format. Password must contain at least 8 characters, including uppercase and lowercase letters, and numbers.";
+        echo "Invalid password format. Password must contain at least 6 characters, including numbers and special characters.";
         exit();
     }
 
@@ -72,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $role = 'user'; // Assign default role to new users
 
-    // Prepare insert query for users table
+    // Prepare insert query for users table using prepared statements
     $stmt = $mysqli->prepare("INSERT INTO users (first_name, last_name, email, phone, password, role) VALUES (?, ?, ?, ?, ?, ?)");
     if ($stmt) {
         $stmt->bind_param("ssssss", $first_name, $last_name, $email, $phone, $hashed_password, $role);
@@ -82,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: login");
             exit();
         } else {
-            echo "Error: " . $stmt->error;
+            echo "Error: " . htmlspecialchars($stmt->error, ENT_QUOTES, 'UTF-8');
         }
 
         $stmt->close();

@@ -30,6 +30,7 @@ if (!validateCSRFToken($_POST['csrf_token'])) {
     echo "CSRF token validation failed.";
     exit();
 }
+
 // Define regex patterns for each input
 $namePattern = '/^[a-zA-Z\s]+$/'; // Only allow alphabets and spaces
 $peoplePattern = '/^(1?[0-9]|20)$/'; // Only allow digits from 1 to 20
@@ -57,26 +58,27 @@ if (!preg_match($messagePattern, $_POST['Message'])) {
     exit();
 }
 
-// Sanitize and escape user inputs (assuming they come from a form)
-$name = $mysqli->real_escape_string($_POST['Name']);
-$people = (int) $_POST['People']; // Assuming it's an integer
-$date = $mysqli->real_escape_string($_POST['date']);
-$message = $mysqli->real_escape_string($_POST['Message']);
+// Sanitize inputs by escaping HTML special characters to prevent XSS
+$name = htmlspecialchars($_POST['Name'], ENT_QUOTES, 'UTF-8');
+$people = (int) $_POST['People'];
+$date = htmlspecialchars($_POST['date'], ENT_QUOTES, 'UTF-8');
+$message = htmlspecialchars($_POST['Message'], ENT_QUOTES, 'UTF-8');
 
-// Prepare insert query for reservations table
-$insert_query = "INSERT INTO reservations (name, people, reservation_datetime, message) 
-                 VALUES ('$name', $people, '$date', '$message')";
+// Prepare insert query for reservations table using prepared statements
+$stmt = $mysqli->prepare("INSERT INTO reservations (name, people, reservation_datetime, message) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("siss", $name, $people, $date, $message);
 
 // Execute query and handle results
-if ($mysqli->query($insert_query) === TRUE) {
+if ($stmt->execute()) {
     // Reservation successful
     header("Location: thank_you");
     exit();
 } else {
     // Reservation failed
-    echo "Error: " . $insert_query . "<br>" . $mysqli->error;
+    echo "Error: " . $stmt->error;
 }
 
-// Close database connection
+// Close statement and database connection
+$stmt->close();
 $mysqli->close();
 ?>
