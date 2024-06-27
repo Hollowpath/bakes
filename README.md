@@ -103,16 +103,6 @@ The objective is to implement essential web application security practices to pr
      - Only `user` can access the web and make reservations.
      - Only `admin` can access the admin page and accept or reject pending reservations.
     
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-}
-// Redirect to login page if not logged in header("Location: login");
-exit();
-index.php
-// Check if user is admin
-if ($_SESSION['role'] === 'admin') { // Redirect to unauthorized page header("Location: admin");
-exit();
-}
 
 4. **XSS and CSRF Prevention**
    - Implemented CSRF protection:
