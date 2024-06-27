@@ -6,8 +6,7 @@ This project aims to enhance the security of the Macania Bakes web application o
 ### Group Members
 | Name                            | Matric Number | Assigned Tasks                                            | Participation |
 |---------------------------------|---------------|-----------------------------------------------------------|---------------|
-| Bashir Md Monjur                | 2028113       |   Developing 2 role (admin and user), Building the admin page,Building form reservation database, Implement regex for  server side, Implement CSRF on the reservation form, Sanitize reservation form for double protection.
-          | 100%
+| Bashir Md Monjur                | 2028113       |   Developing 2 role (admin and user), Building the admin page,Building form reservation database, Implement regex for  server side, Implement CSRF on the reservation form, Sanitize reservation form for double protection| 100%
 | Wan Mohd Nazim Bin Wan Muhamad Saidin | 2114261       | login page, registration page, database for registration, sanitization of registration form, regexes on registration server-side, password hashing, main CSRF | 100%          |
 | Faizal Akhtar Bin Azhar (Leader)| 2124565       | Session with encryption and expiration, SSL implementation, setting a database password for root MySQL (phpMyAdmin), hiding database password from source codes, disabling MySQL error messages, disabling directory traversal | 100%          |
 
