@@ -122,7 +122,7 @@ The objective is to implement essential web application security practices to pr
         }
         ```
         
-     - Checks if the user is either not logged in or not an admin, and if either condition is true, it redirects them to the login page.
+     - Checks if the `user` is either not logged in or not an `admin`, and if either condition is true, it redirects them to the login page.
         Snippet from `admin.php`
         ```php
         // Check if user is logged in and is admin
